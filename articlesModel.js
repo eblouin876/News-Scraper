@@ -1,11 +1,25 @@
-import { builtinModules } from "module";
-
-let mongoose = requier("mongoose");
+let mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 
-let ArticlesSchema = new Schema({});
+let ArticlesSchema = new Schema({
+  headline: {
+    type: String,
+    trim: true,
+    required: "Headline is required"
+  },
+  summary: {
+    type: String,
+    trim: true,
+    required: "Summary is required"
+  },
+  url: {
+    type: String,
+    trim: true,
+    required: "URL is required"
+  }
+});
 
 let Articles = mongoose.model("Articles", ArticlesSchema);
 
-builtinModules.exports = Articles;
+module.exports = Articles;

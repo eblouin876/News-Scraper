@@ -1,9 +1,7 @@
 let express = require("express");
 let logger = require("morgan");
-let mongoose = reuqire("mongoose");
-
-// Articles model for interraccting with db
-let Articles = require("./articlesModel.js");
+let mongoose = require("mongoose");
+let exphbs = require("express-handlebars");
 
 // Initialize express and set the port
 let app = express();
