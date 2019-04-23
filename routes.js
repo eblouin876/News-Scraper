@@ -25,7 +25,7 @@ let savedTest = {
       body: "This is the body of the article",
       comments: [
         { comment: "This", user: "Me" },
-        { comment: "that", user: "You" },
+        { comment: "that" },
         { comment: "the other", user: "They" }
       ]
     },
