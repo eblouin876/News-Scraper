@@ -96,7 +96,7 @@ module.exports = function(app) {
     articles.forEach(article => {
       Articles.create(article);
     });
-    res.redirect("/");
+    res.send("/");
   });
 
   app.post("/api/comment", function(req, res) {
@@ -108,5 +108,12 @@ module.exports = function(app) {
       res.send("Added comment");
     });
     // Do all of the logic here
+  });
+
+  app.post("/api/save", function(req, res) {
+    // Articles.update({ _title: req.body.title }, { $set: { saved: true } });
+    Articles.findOneAndUpdate({ title: req.body.title }, { saved: true });
+
+    res.send("saved");
   });
 };

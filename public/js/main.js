@@ -18,6 +18,12 @@ $(document).ready(() => {
     $(`#${commentId}`).val("");
   });
 
+  $(".add-saved").on("click", async function() {
+    let title = $(this).attr("data-article");
+    await $.post("/api/save", { title: title });
+    $(this).remove();
+  });
+
   $("#clear-saved").on("click", function() {
     $.ajax({
       url: "/api/clear",
@@ -28,8 +34,8 @@ $(document).ready(() => {
   });
 
   $("#scrape").on("click", function(event) {
-    $.post("/api/newScrape").then(() => {
-      window.location = "/";
+    $.post("/api/newScrape").then(url => {
+      window.location = url;
     });
   });
 });
