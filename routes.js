@@ -59,7 +59,7 @@ module.exports = function(app) {
   app.put("/api/clear", function(req, res) {
     //   Clear the saved data in the database
 
-    res.redirect("/saved");
+    res.send("/");
   });
 
   app.post("/api/newScrape", function(req, res) {

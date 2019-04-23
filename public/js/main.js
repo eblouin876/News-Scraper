@@ -17,4 +17,13 @@ $(document).ready(() => {
     });
     $(`#${commentId}`).val("");
   });
+
+  $("#clear-saved").on("click", function() {
+    $.ajax({
+      url: "/api/clear",
+      type: "put"
+    }).then(url => {
+      window.location = url;
+    });
+  });
 });
