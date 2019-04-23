@@ -65,21 +65,28 @@ module.exports = function(app) {
   });
 
   app.get("/saved", function(req, res) {
-    //   Query the database and get the saved articles
-    res.render("saved", savedTest);
+    Articles.find({}, (err, data) => {
+      if (err) log(err);
+      let articles = [];
+      data.forEach(article => {
+        if (article.saved) {
+          let newArticle = {};
+          newArticle.title = article.title;
+          newArticle.link = article.link;
+          newArticle.body = article.body;
+          newArticle.comments = article.comments;
+          newArticle.saved = article.saved;
+          articles.push(newArticle);
+        }
+      });
+      res.render("saved", { articles: articles });
+    });
   });
 
   app.put("/api/clear", function(req, res) {
     //   Clear the saved data in the database
     Articles.collection.drop();
     res.send("/");
-  });
-
-  app.get("/api/articles", function(req, res) {
-    Articles.find({}, (err, data) => {
-      if (err) log(err);
-      log(data[0].saved);
-    });
   });
 
   app.post("/api/newScrape", async function(req, res) {

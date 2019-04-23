@@ -28,7 +28,8 @@ $(document).ready(() => {
   });
 
   $("#scrape").on("click", function(event) {
-    event.preventDefault();
-    $.post("/api/newScrape");
+    $.post("/api/newScrape").then(() => {
+      window.location = "/";
+    });
   });
 });
