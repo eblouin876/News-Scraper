@@ -1,9 +1,14 @@
 <li {{#if @first}}class="active" {{/if}}>
-    <div class="collapsible-header">{{title}}</div>
+    <div class="collapsible-header">
+        <h5>{{title}}</h5>
+    </div>
     <div class="collapsible-body blue-grey lighten-4"><span>{{body}}</span>
         <div class="row"></div>
         <a href="{{url}}">Read the Full Article</a>
-
+        {{#if saved}}<button class="btn red right remove-saved" , data-title="{{title}}">Remove from
+            Saved</button>{{/if}}
+        {{#unless saved}}<button class="btn right add-saved" , data-title="{{title}}">Add to
+            Saved</button>{{/unless}}
         {{#if comments}}
         <div class="row"></div>
         <h5>Comments:</h5>
@@ -13,7 +18,8 @@
         {{/if}}
         <div class="row"></div>
         <h5>Leave a Comment:</h5>
-        <input type="text" name="comment" id="comment-{{@index}}"><button class="btn submit-comment"
-            data-input-id="comment-{{@index}}" data-article={{title}}>Submit</button>
+        <input type="text" name="comment" id="comment-{{@index}}">
+        <button class="btn submit-comment" data-input-id="comment-{{@index}}" data-article={{title}}>Submit</button>
+
     </div>
 </li>

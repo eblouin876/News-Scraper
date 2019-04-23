@@ -7,12 +7,14 @@ let homeTest = {
     {
       title: "test3",
       url: "https://www.google.com",
-      body: "This is the body of the article"
+      body: "This is the body of the article",
+      saved: false
     },
     {
       title: "test4",
       url: "https://www.google.com",
-      body: "This is the body of the article"
+      body: "This is the body of the article",
+      saved: false
     }
   ]
 };
@@ -27,7 +29,8 @@ let savedTest = {
         { comment: "This", user: "Me" },
         { comment: "that" },
         { comment: "the other", user: "They" }
-      ]
+      ],
+      saved: true
     },
     {
       title: "test2",
@@ -37,7 +40,8 @@ let savedTest = {
         { comment: "This", user: "Me" },
         { comment: "that", user: "You" },
         { comment: "the other", user: "They" }
-      ]
+      ],
+      saved: true
     }
   ]
 };
