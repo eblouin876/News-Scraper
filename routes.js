@@ -94,7 +94,12 @@ module.exports = function(app) {
 
   app.post("/api/comment", function(req, res) {
     log(req.body);
+    Articles.updateOne(
+      { _title: req.body.title },
+      { $set: { comment: req.body.comment } }
+    ).then(() => {
+      res.send("Added comment");
+    });
     // Do all of the logic here
-    res.send("Added comment");
   });
 };
