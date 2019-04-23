@@ -19,7 +19,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.3",
-    "con-logger": "0.0.4",
+    "con-logger": "0.0.5",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
     "mongoose": "^5.5.3",

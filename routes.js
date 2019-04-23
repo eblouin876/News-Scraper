@@ -48,7 +48,20 @@ let savedTest = {
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    res.render("index", homeTest);
+    Articles.find({}, (err, data) => {
+      if (err) log(err);
+      let articles = [];
+      data.forEach(article => {
+        let newArticle = {};
+        newArticle.title = article.title;
+        newArticle.link = article.link;
+        newArticle.body = article.body;
+        newArticle.comments = article.comments;
+        newArticle.saved = article.saved;
+        articles.push(newArticle);
+      });
+      res.render("index", { articles: articles });
+    });
   });
 
   app.get("/saved", function(req, res) {
@@ -58,14 +71,25 @@ module.exports = function(app) {
 
   app.put("/api/clear", function(req, res) {
     //   Clear the saved data in the database
-
+    Articles.collection.drop();
     res.send("/");
   });
 
-  app.post("/api/newScrape", function(req, res) {
+  app.get("/api/articles", function(req, res) {
+    Articles.find({}, (err, data) => {
+      if (err) log(err);
+      log(data[0].saved);
+    });
+  });
+
+  app.post("/api/newScrape", async function(req, res) {
     // Run the scrapper which will return the necessary object
+    let articles = await scraper();
     // Store in the database
-    // Redirect to home and render with new data
+    articles.forEach(article => {
+      Articles.create(article);
+    });
+    res.redirect("/");
   });
 
   app.post("/api/comment", function(req, res) {

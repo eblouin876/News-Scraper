@@ -3,20 +3,28 @@ let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let ArticlesSchema = new Schema({
-  headline: {
+  title: {
     type: String,
     trim: true,
-    required: "Headline is required"
+    required: "Title is required"
   },
-  summary: {
+  body: {
     type: String,
     trim: true,
-    required: "Summary is required"
+    required: "Body is required"
   },
-  url: {
+  link: {
     type: String,
     trim: true,
-    required: "URL is required"
+    required: "Link is required"
+  },
+  comments: {
+    type: String,
+    trim: true
+  },
+  saved: {
+    type: Boolean,
+    default: false
   }
 });
 

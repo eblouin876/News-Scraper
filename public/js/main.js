@@ -26,4 +26,9 @@ $(document).ready(() => {
       window.location = url;
     });
   });
+
+  $("#scrape").on("click", function(event) {
+    event.preventDefault();
+    $.post("/api/newScrape");
+  });
 });
