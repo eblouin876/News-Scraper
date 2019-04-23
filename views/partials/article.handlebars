@@ -1,9 +1,19 @@
-<div class="col s10 offset-s1">
-    <div class="card blue-grey lighten-2">
-        <div class="card-content white-text"><span class="card-title">{{title}}</span>
-            <p>{{body}}</p>
-            <a href="{{url}}"></a>
-        </div>
-        <div class="card-action"><a href="#">Save</a></div>
+<li>
+    <div class="collapsible-header">{{title}}</div>
+    <div class="collapsible-body blue-grey lighten-4"><span>{{body}}</span>
+        <div class="row"></div>
+        <a href="{{url}}">Read the Full Article</a>
+
+        {{#if comments}}
+        <div class="row"></div>
+        <h5>Comments:</h5>
+        {{#each comments}}
+        <p>{{user}}: {{comment}}</p>
+        {{/each}}
+        {{/if}}
+        <div class="row"></div>
+        <h5>Leave a Comment:</h5>
+        <input type="text" name="comment" id="comment-{{@index}}"><button class="btn submit-comment"
+            data-input-id="comment-{{@index}}" data-article={{title}}>Submit</button>
     </div>
-</div>
+</li>

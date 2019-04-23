@@ -12,9 +12,11 @@
     </div>
 
     <div class="row">
-        {{#each articles}}
-        {{>article articles=articles}}
-        {{/each}}
+        <ul class="collapsible">
+            {{#each articles}}
+            {{>article articles=articles}}
+            {{/each}}
+        </ul>
     </div>
 
 </div>
